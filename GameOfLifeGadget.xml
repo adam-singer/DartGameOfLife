@@ -4,50 +4,47 @@
   <ModulePrefs title="Magic Decoder"/> 
   <Content type="html">
   <![CDATA[
-     <script type="text/javascript">
+  
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>GameOfLife</title>
+    <style type="text/css">
+#Next {
+  width: 75px;
+  height: 25px;
+}
+#StopStart {
+  width: 75px;
+  height: 25px;
+}
+#dropDownList {
+  width: 150px;
+  height: 26px;
+}
+#bodyBackground {
+  background-color: rgb(0, 0, 0);
+  color: rgb(51, 255, 51);
+}
+</style></head>
+  <body id="bodyBackground">
+    <h1>Dart: Game of life</h1>
+    <input id="iterationsInput" value="500" min="0" type="number"> <input id="drawSpeedInput"
+      value="250"
+      min="1"
+      max="1000"
+      type="number">
+    <button id="StopStart" value="Stop" name="Stop">Start</button> <button id="Next"
+      value="Next"
+      name="Next">Next</button>
+    <select id="dropDownList" name="ShapeListDropDown">
+    </select>
+    <canvas id="lifeCanvas" width="838" height="800"></canvas>
+    <script type="text/javascript"></script>
+  </body>
 
-       // The gadget version of ROT13.
-       // Encodes/decodes text strings by replacing each letter with the letter
-       // 13 positions to the right in the alphabet. 
-       function decodeMessage (form) {
-          var alpha = "abcdefghijklmnopqrstuvwxyz";
-          var input = form.inputbox.value; 
-          var aChar;
-          var message = "";
-          for (var i = 0; i <input.length; i++)
-          { 
-             aChar = input.charAt(i);
-             var index = alpha.indexOf(aChar.toLowerCase());
+     
 
-             // if a non-alphabetic character, just append to string
-             if (index==-1)
-             {
-                message += aChar;
-             }
 
-             // if you have to wrap around the end of the alphabet
-             else if(index > 12) { // compensate for 0-based index
-                index = 25 - index; // last item in array is at [25]
-                index = 12 - index; // because array starts with 0
-                aChar = alpha.charAt(index);
-                message += aChar;
-             }
-
-             // if you don't have to wrap
-             else {
-                aChar = alpha.charAt(index+13);
-                message += aChar;
-             }
-          }
-          document.getElementById('content_div').innerHTML = "<b>Your message: </b>" + message; 
-     }
-     </script>
-
-     <FORM NAME="myform" ACTION="" METHOD="GET">Message: <BR>
-       <INPUT TYPE="text" NAME="inputbox" VALUE=""><P>
-       <INPUT TYPE="button" NAME="button" Value="Transform" onClick="decodeMessage(this.form)">
-     </FORM>
-     <div id="content_div"></div>
   ]]>
   </Content>
 </Module>
